@@ -18,10 +18,10 @@ tags: ['LeetCode', '算法', '两数之和']
 ```
 ### 解答
 我的解答，简单暴力。。
-
+#### 解答一
 * 时间复杂度：O(n^2)， 对于每个元素，我们试图通过遍历数组的其余部分来寻找它所对应的目标元素，这将耗费 O(n) 的时间。因此时间复杂度为 O(n^2)。
 * 空间复杂度：O(1)
-
+* 执行时间 148ms
 ```
 /**
  * @param {number[]} nums
@@ -36,6 +36,22 @@ var twoSum = function(nums, target) {
                 return [i,j];
             }
         }
+    }
+};
+```
+#### 解答二
+
+用es6的Map , 遍历一次即可
+
+```
+var twoSum = function(nums, target) {
+    let targetMap = new Map()
+    for (let i = 0; i < nums.length; i++) {
+      const key = target - nums[i]
+      if (targetMap.has(key)) {
+        return [targetMap.get(key), i]
+      }
+      targetMap.set(nums[i], i)
     }
 };
 ```
