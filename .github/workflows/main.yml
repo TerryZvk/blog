@@ -38,8 +38,8 @@ jobs:
           chmod 600 ~/.ssh/id_rsa
           ssh-keyscan github.com >> ~/.ssh/known_hosts
           # set git infomation
-          git config --global user.name 'terryzvk' # 换成你自己的邮箱和名字
-          git config --global user.email '657926338@qq.com'
+          git config --global user.name '张文涛' # 换成你自己的邮箱和名字
+          git config --global user.email 'zhangwt@hollycrm.com'
           # install dependencies
           npm i -g hexo-cli # 安装hexo
           npm i
