@@ -30,7 +30,7 @@ jobs:
           node-version: "10.x"
       - name: Setup Hexo env
         env:
-          ACTION_DEPLOY_KEY: ${{ secrets.HEXO_DEPLOY_KEY }} # 这里是上面WinterChenS.github.io新增的公钥：HEXO_DEPLOY_KEY
+          ACTION_DEPLOY_KEY: ${{ secrets.HEXO_DEPLOY_KEY }}
         run: |
           # set up private key for deploy
           mkdir -p ~/.ssh/
