@@ -15,7 +15,7 @@ jobs:
 
     - name: 2. setup nodejs...
 
-      uses: actions/setup-node@v1
+      uses: actions/setup-node@v2
 
     - name: 3. install hexo...
 
