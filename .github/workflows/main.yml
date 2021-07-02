@@ -7,33 +7,35 @@ on:
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
+    
     steps:
+    - name: Checkout codes
+      uses: actions/checkout@v2
 
-    - name: 1. git checkout...
+    - name: Setup node
+      # 设置 node.js 环境
+      uses: actions/setup-node@v1
+      with:
+        node-version: '12.x'
 
-      uses: actions/checkout@v1
+    - name: Cache node modules
+      # 设置包缓存目录，避免每次下载
+      uses: actions/cache@v1
+      with:
+        path: ~/.npm
+        key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
 
-    - name: 2. setup nodejs...
-
-      uses: actions/setup-node@v2
-
-    - name: 3. install hexo...
-
+    - name: Install hexo dependencies
+      # 下载 hexo-cli 脚手架及相关安装包
       run: |
         npm install hexo-cli -g
-        npm i -S hexo-prism-plugin -g
-        npm install hexo-generator-search --save -g
-        npm i hexo-permalink-pinyin  -g
-        npm i --save hexo-wordcount -g
-        npm install hexo-filter-github-emojis  -g
-        npm install hexo-generator-feed  -g
         npm install
 
-    - name: 4. hexo generate public files...
-
+    - name: Generate files
+      # 编译 markdown 文件
       run: |
         hexo clean
-        hexo g
+        hexo generate
 
     - name: Build and Deploy
 
