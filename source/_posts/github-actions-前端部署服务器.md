@@ -5,7 +5,7 @@ tags: ['CI', '部署', '持续集成']
 ---
 
 前端每次部署都要手动打包感觉好麻烦，浪费了大量时间不说还容易出错。所以就研究了一下github 的github actions。github自己推出的持续集成工具。
-·
+<!-- more -->
 ```
 name: Blog CI/CD
 
