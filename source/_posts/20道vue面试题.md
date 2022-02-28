@@ -52,9 +52,23 @@ input v-model='sth'
 input v-bind:value='sth' v-on:input='sth = $event.target.value'
 
 ### v-if 和 v-show 的区别
-v-if 在编译过程中会被转化成三元表达式，条件不满足时不渲染此节点。
+控制手段不同
+编译过程不同
+编译条件不同
 
-v-show 会被编译成指令，条件不满足时控制样式将此节点隐藏（display:none）
+控制手段：v-show隐藏则是为该元素添加css--display:none，dom元素依旧还在。v-if显示隐藏是将dom元素整个添加或删除
+
+编译过程：v-if切换有一个局部编译/卸载的过程，切换过程中合适地销毁和重建内部的事件监听和子组件；v-show只是简单的基于css切换
+
+编译条件：v-if是真正的条件渲染，它会确保在切换过程中条件块内的事件监听器和子组件适当地被销毁和重建。只有渲染条件为假时，并不做操作，直到为真才渲染
+
+v-show 由false变为true的时候不会触发组件的生命周期
+
+v-if由false变为true的时候，触发组件的beforeCreate、create、beforeMount、mounted钩子，由true变为false的时候触发组件的beforeDestory、destoryed方法
+
+性能消耗：v-if有更高的切换消耗；v-show有更高的初始渲染消耗；
+
+
 ### computed、 watch 区别
 
 computed
